@@ -450,15 +450,15 @@ def structure_validation(dataset: pd.DataFrame) -> bool:
         price_cols = ["Close", "High", "Low", "Open", "Volume"]
 
         if not all(
-            pd.api.types.is_float_dtype(dataset[col])
-            or pd.api.types.is_numeric_dtype(dataset[col])
+            # removed redundant check
+            pd.api.types.is_numeric_dtype(dataset[col])
             for col in price_cols
         ):
-            print(f"The Price Columns has passed")
+            print(f"The Price Columns has failed") # corrected error message
             return False
         print("Price Columns has passed! ")
 
-        # ticker(string) validation
+        # ticker validation
         if not pd.api.types.is_string_dtype(dataset["Ticker"]):
             print("ticker has failed validation")
             return False
