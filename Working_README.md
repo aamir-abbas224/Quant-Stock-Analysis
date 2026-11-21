@@ -53,10 +53,10 @@ Our dataset will contain historical market information:
 Open	        Price when the trading session opened
 High	        Highest price during the session
 Low	Lowest      price during the session
-Close	        Closing price
+Close	        Closing price 
 Volume	        Number of shares traded
 
-note : we should not assume todays closing price alone is enough to predict tommorrow's closing price.
+**note: The close price was used as the primary target for analysis, prediction and forecasting.**
 
 # A critical ML concept: data leakage
 
