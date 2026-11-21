@@ -1,4 +1,4 @@
-# Stock-Price-Predictor-Close--LSTM
+# Quant-Stock-Analysis
 
 Updating the project....
 
