@@ -1,14 +1,23 @@
 {
     "cSpell.words": [
         "AAME",
+        "annot",
+        "cmap",
+        "collinearity",
         "dayoftheweek",
         "dayofweek",
         "edgecolors",
+        "figsize",
+        "Intraday",
+        "linecolor",
         "linestyle",
+        "OHLCV",
         "processcessed",
         "Streamlit",
         "tommorrow's",
         "venv",
+        "vmax",
+        "vmin",
         "whos",
         "xlabel",
         "yfinance"

@@ -10,6 +10,7 @@ YFINANCE_PATH = r"C:\Users\Aamir Bin Abbas\Desktop\Research & Thesis\Stock-Price
 SECTOR_WISE_PATH = r"C:\Users\Aamir Bin Abbas\Desktop\Research & Thesis\Stock-Price-Predictor-Close--LSTM\data\raw\yahoo_finance\sector_wise_csv"  # 12 unique sector wise csv files
 PROCESSED_PATH = r"C:\Users\Aamir Bin Abbas\Desktop\Research & Thesis\Stock-Price-Predictor-Close--LSTM\data\processed"  # process folder path
 
+
 # %%
 def path_profile(directory_path: str) -> dict | None:
     """A miscellaneous function to check the availability of csv files and their full directory
@@ -52,6 +53,7 @@ def path_profile(directory_path: str) -> dict | None:
 
         return None
 
+
 # %%
 """# to inspect dataframe quickly and validate the expected structure of stock data
 
@@ -90,6 +92,7 @@ def get_df_profile(dataset:pd.DataFrame) -> dict|None:
 
 # all datasets downloaded from yfinance has their 'Date' in row"""
 
+
 # %%
 def validate_dataframe(dataset: pd.DataFrame) -> None:
     """Validate dataset in a function
@@ -101,13 +104,15 @@ def validate_dataframe(dataset: pd.DataFrame) -> None:
         TypeError: raised if not a pandas dataframe
         EmptyDataError: raised if dataset is empty
     """
-    
+
     if not isinstance(dataset, pd.DataFrame):
-        raise TypeError(f"The arg {dataset} provided is not a pandas dataframe, got {type(dataset).__name__}")
+        raise TypeError(
+            f"The arg {dataset} provided is not a pandas dataframe, got {type(dataset).__name__}"
+        )
 
     if dataset.empty:
         raise EmptyDataError("The provided dataset is empty")
-    
+
 
 # %%
 # 1.0 : clearer code than before and in more detail inspection can be made
@@ -173,6 +178,7 @@ def df_profile(dataset: pd.DataFrame) -> dict | None:
 
         return None
 
+
 # %%
 def standardize_data(dataset: pd.DataFrame) -> pd.DataFrame:
     """
@@ -220,6 +226,7 @@ def standardize_data(dataset: pd.DataFrame) -> pd.DataFrame:
     except (ValueError, IndexError, TypeError) as e:
         print(f"Unexpected Error Occurred : {e}")
         raise
+
 
 # %%
 # takes in dataframe column to give max,min ,mean,mode of a column series
@@ -348,6 +355,7 @@ def column_profile(dataset: pd.DataFrame, columns_name: str) -> dict | None:
 
         return None
 
+
 # %%
 def get_missing_values(
     dataset: pd.DataFrame, converted_dataset: pd.DataFrame
@@ -368,10 +376,10 @@ def get_missing_values(
             pd.DataFrame: a dataframe showing the difference of missing values before and after
 
     """
-    
+
     validate_dataframe(dataset)
     validate_dataframe(converted_dataset)
-    
+
     # checking if both have valid columns structure
     if not dataset.columns.is_unique or not converted_dataset.columns.is_unique:
         raise ValueError("Duplicate columns were detected")
@@ -406,6 +414,7 @@ def get_missing_values(
         print(f"Unexpected Error Occurred : {e}")
         return None
     return combined_dataset
+
 
 # %%
 def structure_validation(dataset: pd.DataFrame) -> bool:
@@ -449,16 +458,12 @@ def structure_validation(dataset: pd.DataFrame) -> bool:
         # Price validation (Allows both float and int types)
         price_cols = ["Close", "High", "Low", "Open", "Volume"]
 
-        if not all(
-            # removed redundant check
-            pd.api.types.is_numeric_dtype(dataset[col])
-            for col in price_cols
-        ):
-            print(f"The Price Columns has failed") # corrected error message
+        if not all(pd.api.types.is_numeric_dtype(dataset[col]) for col in price_cols):
+            print(f"The Price Columns has failed")
             return False
         print("Price Columns has passed! ")
 
-        # ticker validation
+        # ticker(string) validation
         if not pd.api.types.is_string_dtype(dataset["Ticker"]):
             print("ticker has failed validation")
             return False
@@ -470,6 +475,7 @@ def structure_validation(dataset: pd.DataFrame) -> bool:
     except Exception as e:
         print(f"Unexpected Error : {e}")
         raise
+
 
 # %%
 def validate_dates(dataset: pd.DataFrame) -> dict:
@@ -513,6 +519,7 @@ def validate_dates(dataset: pd.DataFrame) -> dict:
             }
 
     return valid_summary
+
 
 # %%
 # saves file in the processed folder after validating the dataset
@@ -558,6 +565,7 @@ def save_processed(dataset: pd.DataFrame) -> bool:
         print(f"Unexpected Error Occurred : {e}")
 
         return False
+
 
 # %%
 def pipeline() -> str:
@@ -613,6 +621,7 @@ def pipeline() -> str:
 
     return f"Saved {saved_file_count} in the processed folder out of {len(access_list)}"
 
+
 # %%
 # pipeline()
 
@@ -630,6 +639,3 @@ df = pd.read_csv(access_list[1])
 
 
 # %%
-
-
-

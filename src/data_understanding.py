@@ -25,6 +25,7 @@ for st in nasdaq_df["Sector"]:
 # %%
 nasdaq_df.groupby("Sector").sample(n=1)
 
+
 # %%
 # this function downloads datasets sector wise for EDA. it names the file according to its name in original dataframe
 def get_sector_files(period: str, interval: str) -> None | int:
@@ -80,6 +81,7 @@ def get_sector_files(period: str, interval: str) -> None | int:
         print(f"Could not fetch data :  {e}")
         return None
 
+
 # %%
 get_sector_files("5y", "1d")
 
@@ -95,6 +97,7 @@ for sym in nasdaq_df["Symbol"]:
 name_list = []
 for sym in nasdaq_df["Name"]:
     name_list.append(sym)
+
 
 # %%
 # below function extracts singular file data via yahoo finance and the data will be saved in raw data subfolder in data.
@@ -132,6 +135,7 @@ def get_data_file(
     except Exception:
         print(f"Error : Either the file exists or Unavailable")
 
+
 # %%
 # run this when file is required to be downloaded : first 20 files shall be downloaded
 for i in range(0, 20):
@@ -142,5 +146,3 @@ for i in range(0, 20):
         get_data_file(target_ticker, "5y", "1d", target_filename)
     except Exception as e:
         print(f"File Already Exists : {e}")
-
-
