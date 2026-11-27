@@ -182,17 +182,18 @@ def df_profile(dataset: pd.DataFrame) -> dict | None:
 # %%
 def standardize_data(dataset: pd.DataFrame) -> pd.DataFrame:
     """
-    Standardizes the datasets for analysis.
+    Standardizes the datasets for analysis (dataset specific).
 
     Args:
         dataset (pd.DataFrame): DataFrame containing stock market data.
 
     Raises:
-        TypeError: If the provided DataFrame is empty.
+        TypeError: If the provided dataset is not pandas dataframe.
         EmptyDataError: If the provided dataset is empty
 
     Returns:
-        pd.DataFrame : a organized dataframe for stock analysis and None upon failure
+        pd.DataFrame : a organized dataframe for stock analysis.
+        Note: This is not a general transformation function
     """
 
     validate_dataframe(dataset)
@@ -624,18 +625,3 @@ def pipeline() -> str:
 
 # %%
 # pipeline()
-
-# %%
-access_list = [
-    file
-    for file in glob.glob(
-        f"{SECTOR_WISE_PATH}/*.csv",
-    )
-]
-
-df = pd.read_csv(access_list[1])
-
-# %%
-
-
-# %%

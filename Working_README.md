@@ -14,6 +14,8 @@
 - [data validation](#data-validation)
   - [formatting](#formatting)
 - [EDA findings and stuff](#eda-findings-and-stuff)
+- [more analysis were created on the way while eda to make it more informative and visualization after eda may not match with the planned document](#more-analysis-were-created-on-the-way-while-eda-to-make-it-more-informative-and-visualization-after-eda-may-not-match-with-the-planned-document)
+- [future](#future)
 
 # Important notes and points for professional read me
 
@@ -124,7 +126,6 @@ also to exclude stocks with missing historical data or unreliable price historie
 ## formatting
 used ruff , black for formatting code files
 
-
 # EDA findings and stuff
 
 Please refer `stock_market-eda-business-questions.md` for the questions that were answered in the eda section
@@ -138,3 +139,11 @@ df2['Open'].corr(df2['Close']) has correlation of 0.989762511379519 # pic Linear
 
 variables :
 `return_df `: returns dataset with ((close-open) /open) data frame 
+
+
+
+# more analysis were created on the way while eda to make it more informative and visualization after eda may not match with the planned document
+
+# future 
+
+Quant and trading firms use C++ heavily for speed.
